@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>FunToy | Lista de Brinquedos</title>
+</head>
+<body>
+<div class="container">
+    <h1>📝 Lista de Brinquedos:</h1>
+
+    <ul>
+        <!-- Loop para exibir os brinquedos cadastrados -->
+        <th:block th:each="brinquedo : ${brinquedos}">
+            <li>
+                <span th:text="${brinquedo.nome}"></span>
+                <div>
+                    <!-- Botão para ver a Descrição do brinquedo -->
+                    <a th:href="@{/descricao/{id}(id=${brinquedo.id})}" class="button">Descrição</a>
+                    <!-- Botão para Editar o brinquedo -->
+                    <a th:href="@{/editar/{id}(id=${brinquedo.id})}" class="button">Editar</a>
+                    <!-- Botão para Excluir o brinquedo -->
+                    <form th:action="@{/excluir/{id}(id=${brinquedo.id})}" method="post" style="display:inline;">
+                        <button type="submit" class="button" onclick="return confirm('Tem certeza que deseja excluir este brinquedo?');">Excluir</button>
+                    </form>
+                </div>
+            </li>
+        </th:block>
+    </ul>
+
+    <!-- Botão para adicionar um novo brinquedo -->
+    <button type="button" class="button" onclick="window.location.href='/adicionar';">Adicionar Brinquedo</button>
+</div>
+</body>
+</html>

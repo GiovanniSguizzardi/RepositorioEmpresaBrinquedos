@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>FunToy | Formulário de Brinquedo</title>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${brinquedo.id == null} ? '➕ Adicionar Brinquedo' : '✏️ Editar Brinquedo'"></h1>
+    <form th:action="@{/salvar}" th:object="${brinquedo}" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required>
+
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" th:field="*{tipo}" required>
+
+        <label for="classificacao">Classificação:</label>
+        <input type="text" id="classificacao" th:field="*{classificacao}" required>
+
+        <label for="tamanho">Tamanho: (em "cm")</label>
+        <input type="number" step="0.01" id="tamanho" th:field="*{tamanho}" required>
+
+        <label for="preco">Preço:</label>
+        <input type="number" step="0.01" id="preco" th:field="*{preco}" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" th:field="*{descricao}" required></textarea>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <button type="button" class="button" onclick="window.location.href='/listar';">Cancelar</button>
+</div>
+</body>
+</html>

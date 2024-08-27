@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>FunToy | Descrição do Brinquedo</title>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="'Descrição do Brinquedo: ' + ${brinquedo.nome}"></h1>
+    <p><strong>Nome:</strong> <span th:text="${brinquedo.nome}"></span></p>
+    <p><strong>Tipo:</strong> <span th:text="${brinquedo.tipo}"></span></p>
+    <p><strong>Classificação:</strong> <span th:text="${brinquedo.classificacao}"></span></p>
+    <p><strong>Tamanho:</strong> <span th:text="${brinquedo.tamanho}"></span></p>
+    <p><strong>Preço:</strong> <span th:text="${brinquedo.preco}"></span></p>
+    <p><strong>Descrição:</strong> <span th:text="${brinquedo.descricao}"></span></p>
+    <button type="button" class="button" onclick="window.location.href='/listar';">Voltar</button>
+</div>
+</body>
+</html>
