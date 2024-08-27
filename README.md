@@ -7,7 +7,7 @@ FunToy é uma aplicação web desenvolvida em Java com Spring Boot para a gestã
 - IDE UTILIZADA: IntelliJ
 
 ## 🔗 Links
-- Link do Site Hospedado: [Link Site-Hospedado](https://repositoriobrinquedos.onrender.com/)
+- Link do Site Hospedado: [Link Site-Hospedado](https://repositorioempresabrinquedos.onrender.com)
 - Link do REPOSITÓRIO: [Link Repositório](https://github.com/GiovanniSguizzardi/RepositorioEmpresaBrinquedos.git)
 
 ## 📜 Documentação
