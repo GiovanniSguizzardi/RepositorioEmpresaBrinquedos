@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Adicionar Fornecedor</title>
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${fornecedor.id == null} ? 'Adicionar Fornecedor' : 'Editar Fornecedor'"></h1>
+  <form th:action="@{/fornecedor/salvar}" th:object="${fornecedor}" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" th:field="*{nome}" required>
+
+    <label for="endereco">Endereço:</label>
+    <input type="text" id="endereco" th:field="*{endereco}" required>
+
+    <label for="telefone">Telefone:</label>
+    <input type="text" id="telefone" th:field="*{telefone}" required>
+
+    <button type="submit">Salvar</button>
+  </form>
+  <button type="button" class="button" onclick="window.location.href='/fornecedores';">Cancelar</button>
+</div>
+</body>
+</html>

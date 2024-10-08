@@ -23,4 +23,8 @@ public class Brinquedo {
     private String classificacao;
     private Double tamanho;
     private Double preco;
+
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
+    private Fornecedor fornecedor;
 }

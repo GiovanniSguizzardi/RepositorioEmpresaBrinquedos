@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Lista de Fornecedores</title>
+</head>
+<body>
+<div class="container">
+  <h1>Lista de Fornecedores:</h1>
+  <ul>
+    <th:block th:each="fornecedor : ${fornecedores}">
+      <li>
+        <span th:text="${fornecedor.nome}"></span>
+        <div>
+          <a th:href="@{/fornecedor/editar/{id}(id=${fornecedor.id})}" class="button">Editar</a>
+          <form th:action="@{/fornecedor/excluir/{id}(id=${fornecedor.id})}" method="post" style="display:inline;">
+            <button type="submit" class="button" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?');">Excluir</button>
+          </form>
+        </div>
+      </li>
+    </th:block>
+  </ul>
+  <button type="button" class="button" onclick="window.location.href='/fornecedor/adicionar';">Adicionar Fornecedor</button>
+</div>
+</body>
+</html>
