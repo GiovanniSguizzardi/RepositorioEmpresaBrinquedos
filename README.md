@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/146f1e36-22d4-4028-88ea-12acc33402ed)
+
 # RepositorioEmpresaBrinquedos
 FunToy é uma aplicação web desenvolvida em Java com Spring Boot para a gestão de um inventário de brinquedos. A aplicação permite que os usuários adicionem, editem, visualizem e excluam brinquedos, mantendo um registro detalhado de informações importantes como nome, tipo, classificação, tamanho, preço e descrição de cada brinquedo. Além disso, a aplicação agora gerencia fornecedores dos brinquedos, possibilitando a adição, edição e listagem de fornecedores.
 
