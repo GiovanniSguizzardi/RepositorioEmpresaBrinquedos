@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>FunToy | Erro</title>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb" style="justify-content:center">
+        <a href="/">Home</a><span class="sep">/</span>
+        <span>Erro</span>
+    </div>
+
+    <div class="page-head" style="text-align:center">
+        <h1>🤒 Oops... algo não saiu como esperado</h1>
+        <p class="muted">Não se preocupe — você pode tentar de novo ou voltar para um caminho seguro.</p>
+    </div>
+
+    <div class="card error-card">
+        <div class="error-emoji">🧩</div>
+
+        <!-- Se passar uma mensagem específica via model, mostramos aqui -->
+        <p class="error-hint" th:if="${mensagemErro}" th:text="${mensagemErro}">
+            Ocorreu um erro inesperado.
+        </p>
+
+        <div class="actions" style="justify-content:center">
+            <button type="button" class="button" onclick="location.reload()">Tentar novamente</button>
+            <button type="button" class="button secondary" onclick="history.back()">Voltar</button>
+        </div>
+
+        <div class="links">
+            <a href="/" class="button ghost">🏠 Voltar para a Home</a>
+            <a href="/listar" class="button ghost">🧸 Listar Brinquedos</a>
+            <a href="/fornecedores" class="button ghost">🏭 Listar Fornecedores</a>
+        </div>
+    </div>
+
+    <div class="footer">Se o problema persistir, contate o suporte do sistema.</div>
+</div>
+</body>
+</html>

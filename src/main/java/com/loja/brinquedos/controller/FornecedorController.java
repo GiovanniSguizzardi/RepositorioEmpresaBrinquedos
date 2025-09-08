@@ -26,8 +26,17 @@ public class FornecedorController {
     }
 
     @PostMapping("/fornecedor/salvar")
-    public String salvarFornecedor(@ModelAttribute Fornecedor fornecedor) {
-        fornecedorRepository.save(fornecedor);
+    public String salvarFornecedor(@ModelAttribute("fornecedor") Fornecedor fornecedor) {
+        if (fornecedor.getId() != null) {
+            Fornecedor existente = fornecedorRepository.findById(fornecedor.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + fornecedor.getId()));
+            existente.setNome(fornecedor.getNome());
+            existente.setEndereco(fornecedor.getEndereco());
+            existente.setTelefone(fornecedor.getTelefone());
+            fornecedorRepository.save(existente);
+        } else {
+            fornecedorRepository.save(fornecedor);
+        }
         return "redirect:/fornecedores";
     }
 

@@ -1,28 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
-  <title>Lista de Fornecedores</title>
+  <title>FunToy | Lista de Fornecedores</title>
 </head>
 <body>
 <div class="container">
-  <h1>Lista de Fornecedores:</h1>
-  <ul>
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <span>Fornecedores</span>
+  </div>
+
+  <div class="page-head">
+    <h1>🏭 Lista de Fornecedores</h1>
+    <p class="muted">Gerencie seus parceiros de fornecimento.</p>
+  </div>
+
+  <ul class="list">
     <th:block th:each="fornecedor : ${fornecedores}">
-      <li>
-        <span th:text="${fornecedor.nome}"></span>
-        <div>
+      <li class="list-item">
+        <div class="list-item-title" th:text="${fornecedor.nome}">Nome do fornecedor</div>
+        <div class="actions">
           <a th:href="@{/fornecedor/editar/{id}(id=${fornecedor.id})}" class="button">Editar</a>
           <form th:action="@{/fornecedor/excluir/{id}(id=${fornecedor.id})}" method="post" style="display:inline;">
-            <button type="submit" class="button" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?');">Excluir</button>
+            <button type="submit" class="button danger"
+                    onclick="return confirm('Tem certeza que deseja excluir este fornecedor?');">Excluir</button>
           </form>
         </div>
       </li>
     </th:block>
   </ul>
-  <button type="button" class="button" onclick="window.location.href='/fornecedor/adicionar';">Adicionar Fornecedor</button>
+
+  <div class="actions" style="margin-top:16px">
+    <a href="/fornecedor/adicionar" class="button">Adicionar Fornecedor</a>
+    <a href="/" class="button ghost">Home</a>
+  </div>
 </div>
 </body>
 </html>

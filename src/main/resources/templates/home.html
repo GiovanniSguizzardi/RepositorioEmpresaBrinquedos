@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,25 @@
 </head>
 <body>
 <div class="container">
-    <h1>Bem-vindo(a) à FunToy!</h1>
-    <p>Aqui estão os endpoints disponíveis na aplicação:</p>
-    <ul>
-        <li><a href="/listar">Listar Brinquedos</a></li>
-        <li><a href="/fornecedores">Listar Fornecedores</a></li>
-    </ul>
+    <div class="breadcrumb"><span>Home</span></div>
+
+    <div class="page-head">
+        <h1>🎉 Bem-vindo(a) à FunToy</h1>
+        <p class="subtitle">Escolha uma seção para começar:</p>
+    </div>
+
+    <div class="cards">
+        <a href="/listar" class="card card-link">
+            <h2>🧸 Brinquedos</h2>
+            <p>Gerencie, edite e acompanhe seus brinquedos.</p>
+        </a>
+        <a href="/fornecedores" class="card card-link">
+            <h2>🏭 Fornecedores</h2>
+            <p>Visualize e edite os parceiros de fornecimento.</p>
+        </a>
+    </div>
+
+    <div class="footer">FunToy © 2025 — Gestão de Brinquedos e Fornecedores</div>
 </div>
 </body>
 </html>

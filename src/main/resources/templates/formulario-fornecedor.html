@@ -1,27 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
-  <title>Adicionar Fornecedor</title>
+  <title th:text="${fornecedor.id == null} ? 'FunToy | Adicionar Fornecedor' : 'FunToy | Editar Fornecedor'">Fornecedor</title>
 </head>
 <body>
 <div class="container">
-  <h1 th:text="${fornecedor.id == null} ? 'Adicionar Fornecedor' : 'Editar Fornecedor'"></h1>
-  <form th:action="@{/fornecedor/salvar}" th:object="${fornecedor}" method="post">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" th:field="*{nome}" required>
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/fornecedores">Fornecedores</a><span class="sep">/</span>
+    <span th:text="${fornecedor.id == null} ? 'Adicionar' : 'Editar'">Form</span>
+  </div>
 
-    <label for="endereco">Endereço:</label>
-    <input type="text" id="endereco" th:field="*{endereco}" required>
+  <div class="page-head">
+    <h1 th:text="${fornecedor.id == null} ? '➕ Adicionar Fornecedor' : '✏️ Editar Fornecedor'"></h1>
+    <p class="muted" th:text="${fornecedor.id == null} ? 'Cadastre um novo parceiro.' : 'Atualize os dados do fornecedor.'"></p>
+  </div>
 
-    <label for="telefone">Telefone:</label>
-    <input type="text" id="telefone" th:field="*{telefone}" required>
+  <div class="card">
+    <form class="form" th:action="@{/fornecedor/salvar}" th:object="${fornecedor}" method="post">
+      <input type="hidden" th:field="*{id}" />
 
-    <button type="submit">Salvar</button>
-  </form>
-  <button type="button" class="button" onclick="window.location.href='/fornecedores';">Cancelar</button>
+      <div class="form-row">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" th:field="*{nome}" required>
+      </div>
+
+      <div class="form-row">
+        <label for="endereco">Endereço</label>
+        <input type="text" id="endereco" th:field="*{endereco}" required>
+      </div>
+
+      <div class="form-row">
+        <label for="telefone">Telefone</label>
+        <input type="text" id="telefone" th:field="*{telefone}" required>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="button">Salvar</button>
+        <a href="/fornecedores" class="button secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
 </div>
 </body>
 </html>

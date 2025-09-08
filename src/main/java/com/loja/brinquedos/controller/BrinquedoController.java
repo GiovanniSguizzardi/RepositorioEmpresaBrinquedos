@@ -30,8 +30,24 @@ public class BrinquedoController {
     // Método para salvar um brinquedo
     @PostMapping("/salvar")
     public String salvarBrinquedo(@ModelAttribute Brinquedo brinquedo) {
-        brinquedoRepository.save(brinquedo); // Salva o brinquedo (novo ou editado)
-        return "redirect:/listar"; // Redireciona para a lista de brinquedos após salvar
+        if (brinquedo.getId() != null) {
+            Brinquedo existente = brinquedoRepository.findById(brinquedo.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + brinquedo.getId()));
+
+            existente.setNome(brinquedo.getNome());
+            existente.setTipo(brinquedo.getTipo());
+            existente.setClassificacao(brinquedo.getClassificacao());
+            existente.setTamanho(brinquedo.getTamanho());
+            existente.setPreco(brinquedo.getPreco());
+            existente.setDescricao(brinquedo.getDescricao());
+            // se houver relacionamento com Fornecedor no seu modelo:
+            // existente.setFornecedor(brinquedo.getFornecedor());
+
+            brinquedoRepository.save(existente);
+        } else {
+            brinquedoRepository.save(brinquedo);
+        }
+        return "redirect:/listar";
     }
 
     // Método para editar um brinquedo existente

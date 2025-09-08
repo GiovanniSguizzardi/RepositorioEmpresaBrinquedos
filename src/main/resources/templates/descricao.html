@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +8,55 @@
 </head>
 <body>
 <div class="container">
-    <h1 th:text="'Descrição do Brinquedo: ' + ${brinquedo.nome}"></h1>
-    <p><strong>Nome:</strong> <span th:text="${brinquedo.nome}"></span></p>
-    <p><strong>Tipo:</strong> <span th:text="${brinquedo.tipo}"></span></p>
-    <p><strong>Classificação:</strong> <span th:text="${brinquedo.classificacao}"></span></p>
-    <p><strong>Tamanho:</strong> <span th:text="${brinquedo.tamanho}"></span></p>
-    <p><strong>Preço:</strong> <span th:text="${brinquedo.preco}"></span></p>
-    <p><strong>Descrição:</strong> <span th:text="${brinquedo.descricao}"></span></p>
-    <button type="button" class="button" onclick="window.location.href='/listar';">Voltar</button>
+    <div class="breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span>
+        <a href="/listar">Brinquedos</a><span class="sep">/</span>
+        <span>Descrição</span>
+    </div>
+
+    <div class="page-head">
+        <h1>🔎 Descrição do Brinquedo</h1>
+        <p class="subtitle" th:text="${brinquedo.nome}">Nome do brinquedo</p>
+    </div>
+
+    <div class="card">
+        <div class="details">
+            <div class="detail-row">
+                <div class="detail-label">Nome</div>
+                <div class="detail-value" th:text="${brinquedo.nome}">—</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Tipo</div>
+                <div class="detail-value" th:text="${brinquedo.tipo}">—</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Classificação</div>
+                <div class="detail-value" th:text="${brinquedo.classificacao}">—</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Tamanho (cm)</div>
+                <div class="detail-value" th:text="${#numbers.formatDecimal(brinquedo.tamanho, 0, 2)} + ' cm'">—</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Preço</div>
+                <div class="detail-value" th:text="${#numbers.formatCurrency(brinquedo.preco)}">—</div>
+            </div>
+
+            <div class="detail-row" style="grid-template-columns: 160px 1fr;">
+                <div class="detail-label">Descrição</div>
+                <div class="detail-value" th:text="${brinquedo.descricao}">—</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="actions" style="margin-top:16px">
+        <a th:href="@{/editar/{id}(id=${brinquedo.id})}" class="button">Editar</a>
+        <a href="/listar" class="button secondary">Voltar para a lista</a>
+    </div>
 </div>
 </body>
 </html>

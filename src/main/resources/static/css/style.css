@@ -1,142 +1,136 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Reset básico */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #ebfcd7;
-    color: #333;
-    line-height: 1.6;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg,#f8f9fa,#eef1f5);
+    color: #222;
 }
 
+/* Container */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 980px;
+    margin: 48px auto;
+    padding: 0 20px 32px;
 }
 
+/* Títulos */
 h1 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2em;
-    text-align: left;
-    border-bottom: 2px solid #00796b;
-    padding-bottom: 10px;
+    font-size: 2rem;
+    margin: 0 0 8px;
+}
+.subtitle, .muted { color: #6b7280; margin: 0 0 24px; }
+
+/* Page head */
+.page-head { margin-bottom: 18px; }
+
+/* Card genérico */
+.card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(16,24,40,0.06);
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+/* Cards de navegação (Home) */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
 }
-
-li {
-    background-color: #fff;
-    margin: 15px 0;
-    padding: 15px 20px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-li a {
-    color: #00796b;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-li a:hover {
-    text-decoration: underline;
-}
-
-button {
-    background-color: #00796b;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.9s ease;
-}
-
-button:hover {
-    background-color: #004d40;
-}
-
-.form-container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 40px auto;
-}
-
-label {
+.card-link {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-}
-
-input[type="text"], textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-textarea {
-    resize: vertical;
-    height: 100px;
-}
-
-.form-container button {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-}
-
-.form-container a.button {
-    display: inline-block;
-    text-align: center;
-    margin-top: 20px;
-    background-color: #ccc;
-    color: #333;
+    padding: 22px 18px;
     text-decoration: none;
+    color: inherit;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+.card-link:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(16,24,40,0.10); }
+.card-link h2 { margin: 0 0 6px; font-size: 1.2rem; color: #0d6efd; }
+.card-link p { margin: 0; color: #64748b; }
+
+/* Formulário */
+.form {
+    padding: 22px;
+    display: grid;
+    gap: 14px;
+}
+.form-row { display: grid; gap: 6px; }
+label { font-weight: 600; color: #374151; }
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: #fff;
+    outline: none;
+    transition: border .15s ease, box-shadow .15s ease;
+}
+textarea { min-height: 110px; resize: vertical; }
+input:focus, textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13,110,253,0.12);
 }
 
-.form-container a.button:hover {
-    background-color: #999;
+/* Ações */
+.actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 4px 0; }
+.button, button, .btn {
+    appearance: none;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    background: #0d6efd; color: #fff;
+    cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: filter .12s ease, transform .06s ease;
 }
+.button:hover { filter: brightness(0.96); }
+.button:active { transform: translateY(1px); }
+.button.secondary { background: #6c757d; }
+.button.ghost { background: transparent; color: #0d6efd; border: 1px solid #bcd1ff; }
+.button.danger { background: #dc3545; }
 
-/* Estilos para uma lista vazia */
-.no-items {
-    text-align: center;
-    color: #999;
-    font-size: 1.2em;
-    margin-top: 40px;
+/* Lista estilizada */
+.list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.list-item {
+    display: grid; gap: 10px;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb; border-radius: 12px; background: #fff;
 }
+.list-item-title { font-weight: 600; }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    li {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    button {
-        margin-top: 10px;
-        width: 100%;
-    }
-
-    .form-container {
-        padding: 20px;
-        margin: 20px auto;
-    }
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: .95rem;
+    color: #6b7280;
+    margin: 4px 0 18px;
 }
+.breadcrumb a { color: #0d6efd; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: #9aa3af; }
+
+/* Descrição (detalhes) */
+.details { display: grid; gap: 10px; padding: 18px; }
+.detail-row {
+    display: grid; grid-template-columns: 160px 1fr;
+    gap: 12px; align-items: start;
+    padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff;
+}
+.detail-label { font-weight: 700; color: #374151; }
+.detail-value { color: #111827; }
+
+/* Erro */
+.error-card { padding: 22px; text-align: center; }
+.error-emoji { font-size: 2.2rem; margin-bottom: 8px; }
+.error-hint { color: #6b7280; margin: 0 0 8px; }
+.links { display: grid; gap: 10px; margin-top: 12px; }
+
+/* Rodapé */
+.footer { margin-top: 20px; color: #9aa3af; font-size: .92rem; text-align: center; }
